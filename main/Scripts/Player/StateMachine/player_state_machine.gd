@@ -5,7 +5,7 @@ extends Node
 
 # Initialie the state machine by giving each child state a reference to the
 # parent obect it belongs to and endter the default starting_state.
-func _init(parent: Player) -> void:
+func init(parent: Player) -> void:
 	for child in get_children():
 		child.parent = parent
 	

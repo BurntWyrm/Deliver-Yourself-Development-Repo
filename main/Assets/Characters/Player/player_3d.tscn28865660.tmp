@@ -1,35 +1,53 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgh1spnlgo8n8"]
 
-[ext_resource type="Script" uid="uid://bhb1qxc1ey1lj" path="res://Scripts/player_3d.gd" id="1_c8unq"]
 [ext_resource type="PackedScene" uid="uid://baoi7lngjtq8r" path="res://Assets/Characters/Player/Models/box_morph.glb" id="1_n4av1"]
 [ext_resource type="Script" uid="uid://b4isl1gsa71m3" path="res://Scripts/Player/StateMachine/player_state_machine.gd" id="3_iinur"]
 [ext_resource type="Script" uid="uid://dov2dchxdytcc" path="res://Scripts/Player/StateMachine/States/box_state.gd" id="3_sksts"]
 [ext_resource type="Script" uid="uid://nxlmiscntdgo" path="res://Scripts/Player/StateMachine/States/envelope_state.gd" id="4_q0uwj"]
 [ext_resource type="Script" uid="uid://cmlgo6r1elbpg" path="res://Scripts/Player/StateMachine/States/gift_state.gd" id="5_c8unq"]
 
+[sub_resource type="GDScript" id="GDScript_iinur"]
+script/source = "class_name Player
+extends RigidBody3D
+
+@onready var player_state_machine: Node = $PlayerStateMachine
+
+func _ready() -> void:
+	# Initialize the state machine, passing a reference of the player to the different states
+	# That way they can react and function accordingly
+	player_state_machine.init(self)
+
+func _unhandled_input(event: InputEvent) -> void:
+	player_state_machine.process_input(event)
+
+func _physics_process(delta: float) -> void:
+	player_state_machine.process_physics(delta)
+
+func _process(delta: float) -> void:
+	player_state_machine.process_frame(delta)
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_416vt"]
 size = Vector3(0.529, 0.296, 0.374)
 
 [node name="Player3D" type="RigidBody3D"]
-script = ExtResource("1_c8unq")
+script = SubResource("GDScript_iinur")
 
-[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+[node name="PlayerCollision3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
 shape = SubResource("BoxShape3D_416vt")
 
-[node name="Morphs" type="Node3D" parent="."]
+[node name="PlayerVisuals" type="Node3D" parent="."]
 
-[node name="box_morph" parent="Morphs" instance=ExtResource("1_n4av1")]
+[node name="box_morph" parent="PlayerVisuals" instance=ExtResource("1_n4av1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_iinur")
 starting_state = NodePath("BoxState")
 
-[node name="BoxState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("envelope_morph", "gift_morph")]
+[node name="BoxState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("3_sksts")
-envelope_morph = NodePath("../EnvelopeState")
-gift_morph = NodePath("../GiftState")
 
 [node name="BoxSubStateMachine" type="Node" parent="PlayerStateMachine/BoxState"]
 
