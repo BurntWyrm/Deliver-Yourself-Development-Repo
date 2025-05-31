@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbeqj4ahbdjs"
-path="res://.godot/imported/box_morph_box_pallet.png-c1a9657fad6c0f96315c218cf6b1b744.ctex"
+uid="uid://dr2h66s5gt7ko"
+path="res://.godot/imported/envelope_morph_envelop_pallet.png-5184cea387a0395bc3c9fa80153b39fd.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "7fa9a03b2404ce9bf157bffce5298dbf"
+"md5": "7eabee9fb4f627a517a15759720e6672"
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Player/Models/box_morph_box_pallet.png"
-dest_files=["res://.godot/imported/box_morph_box_pallet.png-c1a9657fad6c0f96315c218cf6b1b744.ctex"]
+source_file="res://Assets/Characters/Player/Models/envelope_morph_envelop_pallet.png"
+dest_files=["res://.godot/imported/envelope_morph_envelop_pallet.png-5184cea387a0395bc3c9fa80153b39fd.ctex"]
 
 [params]
 

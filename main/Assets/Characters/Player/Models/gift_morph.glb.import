@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0svw738xpqr"
-path="res://.godot/imported/box_morph.glb-e7495eca6ba9b13523627043d20e45d2.scn"
+uid="uid://b0pcd1s5q7ka1"
+path="res://.godot/imported/gift_morph.glb-6a6a4dbe77b2a8706314382c2422bab2.scn"
 
 [deps]
 
-source_file="res://Assets/Characters/Player/Models/box_morph.glb"
-dest_files=["res://.godot/imported/box_morph.glb-e7495eca6ba9b13523627043d20e45d2.scn"]
+source_file="res://Assets/Characters/Player/Models/gift_morph.glb"
+dest_files=["res://.godot/imported/gift_morph.glb-6a6a4dbe77b2a8706314382c2422bab2.scn"]
 
 [params]
 

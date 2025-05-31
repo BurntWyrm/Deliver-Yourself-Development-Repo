@@ -1,26 +1,361 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgh1spnlgo8n8"]
+[gd_scene load_steps=15 format=3 uid="uid://dgh1spnlgo8n8"]
 
 [ext_resource type="Script" uid="uid://bhb1qxc1ey1lj" path="res://Scripts/player_3d.gd" id="1_c8unq"]
-[ext_resource type="PackedScene" uid="uid://baoi7lngjtq8r" path="res://Assets/Characters/Player/Models/box_morph.glb" id="1_n4av1"]
+[ext_resource type="PackedScene" uid="uid://b0svw738xpqr" path="res://Assets/Characters/Player/Models/box_morph.glb" id="1_n4av1"]
 [ext_resource type="Script" uid="uid://b4isl1gsa71m3" path="res://Scripts/Player/StateMachine/player_state_machine.gd" id="3_iinur"]
+[ext_resource type="PackedScene" uid="uid://ryjwvbbcd42s" path="res://Assets/Characters/Player/Models/envelope_morph.glb" id="3_niniu"]
 [ext_resource type="Script" uid="uid://dov2dchxdytcc" path="res://Scripts/Player/StateMachine/States/box_state.gd" id="3_sksts"]
+[ext_resource type="PackedScene" uid="uid://b0pcd1s5q7ka1" path="res://Assets/Characters/Player/Models/gift_morph.glb" id="4_1f65d"]
 [ext_resource type="Script" uid="uid://nxlmiscntdgo" path="res://Scripts/Player/StateMachine/States/envelope_state.gd" id="4_q0uwj"]
 [ext_resource type="Script" uid="uid://cmlgo6r1elbpg" path="res://Scripts/Player/StateMachine/States/gift_state.gd" id="5_c8unq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_416vt"]
 size = Vector3(0.529, 0.296, 0.374)
 
+[sub_resource type="Animation" id="Animation_niniu"]
+resource_name = "box_state"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.529, 0.296, 0.374)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Morphs/gift_morph:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morphs/envelope_morph:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morphs/box_morph:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.02, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1f65d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.529, 0.296, 0.374)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Morphs/gift_morph:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morphs/envelope_morph:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morphs/box_morph:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_31y5l"]
+resource_name = "gift_state"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.257, 0.253, 0.257)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Morphs/gift_morph:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morphs/envelope_morph:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morphs/box_morph:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_whlcv"]
+resource_name = "envelope_state"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.11, 0.012, 0.22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Morphs/gift_morph:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morphs/envelope_morph:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morphs/box_morph:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, -0.005, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_31y5l"]
+_data = {
+&"RESET": SubResource("Animation_1f65d"),
+&"box_state": SubResource("Animation_niniu"),
+&"envelope_state": SubResource("Animation_whlcv"),
+&"gift_state": SubResource("Animation_31y5l")
+}
+
 [node name="Player3D" type="RigidBody3D"]
 script = ExtResource("1_c8unq")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
 shape = SubResource("BoxShape3D_416vt")
 
 [node name="Morphs" type="Node3D" parent="."]
 
 [node name="box_morph" parent="Morphs" instance=ExtResource("1_n4av1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="box_outside_flap_2" parent="Morphs/box_morph/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(1, 5.50712e-14, 5.96047e-08, -3.53605e-14, 1, -8.52651e-14, -5.96046e-08, 1.42109e-13, 1, -0.0940775, -0.173398, 0.000508944)
+
+[node name="box_outside_flap_1" parent="Morphs/box_morph/Armature_001/Skeleton3D" index="1"]
+transform = Transform3D(1, -9.77891e-14, 5.96045e-08, -3.94649e-14, 1, 1.13687e-13, -5.96046e-08, -1.13687e-13, 1, 0.094078, -0.173398, 0.000508944)
+
+[node name="box_inside_flap_1" parent="Morphs/box_morph/Armature_001/Skeleton3D" index="2"]
+transform = Transform3D(1, 8.52651e-14, 0, -5.68434e-14, 1, 5.96047e-08, -2.85327e-14, -5.96047e-08, 1, -0.00161709, -0.172398, 0.200591)
+
+[node name="box_inside_flap_1_001" parent="Morphs/box_morph/Armature_001/Skeleton3D" index="3"]
+transform = Transform3D(1, -5.96047e-08, 1.19209e-07, 0, 1, 1.19209e-07, -1.78814e-07, -1.78814e-07, 1, -0.000363288, -0.172398, -0.197818)
+
+[node name="box_cover" parent="Morphs/box_morph/Armature_001/Skeleton3D" index="4"]
+transform = Transform3D(1, 1.42109e-14, -1.42109e-14, -1.42109e-14, 1, 7.10543e-15, -1.42109e-14, -7.10543e-15, 1, 2.43696e-07, 2.111e-08, -1.24176e-09)
+
+[node name="envelope_morph" parent="Morphs" instance=ExtResource("3_niniu")]
+visible = false
+
+[node name="gift_morph" parent="Morphs" instance=ExtResource("4_1f65d")]
+
+[node name="gift_top" parent="Morphs/gift_morph/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, -5.70745e-07, -1.40849e-07, 5.33894e-07, 1, -2.12341e-07, 2.88084e-08, 1.19209e-07, 1, -1.8484e-08, 0.102433, 1.49012e-08)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_iinur")
@@ -66,3 +401,11 @@ box_morph = NodePath("../BoxState")
 [node name="giftshoot" type="Node" parent="PlayerStateMachine/GiftState/GiftSubStateMachine"]
 
 [node name="giftaim" type="Node" parent="PlayerStateMachine/GiftState/GiftSubStateMachine"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_31y5l")
+}
+
+[editable path="Morphs/box_morph"]
+[editable path="Morphs/gift_morph"]

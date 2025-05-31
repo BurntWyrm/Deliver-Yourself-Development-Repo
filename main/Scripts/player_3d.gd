@@ -1,6 +1,7 @@
 class_name Player
 extends RigidBody3D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_state_machine: Node = $PlayerStateMachine
 
 func _ready() -> void:

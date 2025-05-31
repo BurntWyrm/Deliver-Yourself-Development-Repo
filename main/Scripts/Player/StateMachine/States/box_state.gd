@@ -4,6 +4,7 @@ extends State
 @export var gift_morph: State
 
 func enter() -> void:
+	parent.animation_player.play("box_state")
 	print("box morph")
 
 func process_input(event: InputEvent) -> State:
