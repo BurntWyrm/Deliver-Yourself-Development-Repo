@@ -81,20 +81,18 @@ envelope_morph = NodePath("../EnvelopeMorph")
 
 [node name="MovementMachine" type="Node" parent="StateMachine/GiftMorph" node_paths=PackedStringArray("starting_state")]
 script = ExtResource("5_niniu")
-starting_state = NodePath("GiftIdle")
+starting_state = NodePath("")
 
-[node name="GiftIdle" type="Node" parent="StateMachine/GiftMorph/MovementMachine" node_paths=PackedStringArray("gift_move")]
+[node name="GiftIdle" type="Node" parent="StateMachine/GiftMorph/MovementMachine"]
 script = ExtResource("10_b23de")
-gift_move = NodePath("../GiftMove")
 
-[node name="GiftMove" type="Node" parent="StateMachine/GiftMorph/MovementMachine" node_paths=PackedStringArray("gift_idle")]
+[node name="GiftMove" type="Node" parent="StateMachine/GiftMorph/MovementMachine"]
 script = ExtResource("11_buqtg")
-gift_idle = NodePath("../GiftIdle")
 
 [node name="EnvelopeMorph" type="Node" parent="StateMachine" node_paths=PackedStringArray("gift_morph", "box_morph")]
 script = ExtResource("6_niniu")
 gift_morph = NodePath("../GiftMorph")
-box_morph = NodePath("../BoxMorph")
+box_morph = NodePath(".")
 
 [node name="MovementMachine" type="Node" parent="StateMachine/EnvelopeMorph" node_paths=PackedStringArray("starting_state")]
 script = ExtResource("5_niniu")

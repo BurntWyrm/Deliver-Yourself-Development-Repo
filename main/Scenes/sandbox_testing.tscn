@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4ce3rd64dogu"]
+[gd_scene load_steps=11 format=3 uid="uid://b4ce3rd64dogu"]
 
-[ext_resource type="Texture2D" uid="uid://dqmhfvytxi24a" path="res://Assets/Environment/kenney_prototype-textures/PNG/Dark/texture_13.png" id="1_44vwv"]
+[ext_resource type="Material" uid="uid://b77ryguvll5mf" path="res://Assets/Environment/kenney_prototype-textures/Tres/DarkTexture_13.tres" id="1_d2yjn"]
 [ext_resource type="Material" uid="uid://bgb4t5okwuvba" path="res://Assets/Environment/kenney_prototype-textures/Tres/OrangeTexture_09.tres" id="3_67s1q"]
 [ext_resource type="PackedScene" uid="uid://dgh1spnlgo8n8" path="res://Assets/Characters/Player/player_3d.tscn" id="4_d2yjn"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_q7f6b"]
+[ext_resource type="PackedScene" uid="uid://ryjwvbbcd42s" path="res://Assets/Characters/Player/Models/envelope_morph.glb" id="5_d2yjn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ah0vb"]
 
@@ -14,21 +15,12 @@ sky_material = SubResource("ProceduralSkyMaterial_ah0vb")
 background_mode = 2
 sky = SubResource("Sky_67s1q")
 
-[sub_resource type="BoxMesh" id="BoxMesh_44f24"]
-size = Vector3(20, 1, 20)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ah0vb"]
-albedo_texture = ExtResource("1_44vwv")
-uv1_triplanar = true
-uv2_triplanar = true
-uv2_world_triplanar = true
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ah0vb"]
-data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
-
 [sub_resource type="PrismMesh" id="PrismMesh_67s1q"]
 left_to_right = 0.0
 size = Vector3(4, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n14a"]
+size = Vector3(0.11, 0.012, 0.22)
 
 [node name="sandbox" type="Node3D"]
 
@@ -42,15 +34,10 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 5.63687
 
 [node name="Map" type="Node3D" parent="."]
 
-[node name="Floor" type="StaticBody3D" parent="Map"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Floor"]
-mesh = SubResource("BoxMesh_44f24")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ah0vb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Floor"]
-shape = SubResource("ConcavePolygonShape3D_ah0vb")
+[node name="Floor" type="CSGBox3D" parent="Map"]
+use_collision = true
+size = Vector3(20, 1, 20)
+material = ExtResource("1_d2yjn")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -0.25)
@@ -75,4 +62,13 @@ script = ExtResource("4_q7f6b")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Player3D" parent="." instance=ExtResource("4_d2yjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="Envelope" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.1, 0)
+continuous_cd = true
+
+[node name="envelope_morph" parent="Envelope" instance=ExtResource("5_d2yjn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Envelope"]
+shape = SubResource("BoxShape3D_3n14a")

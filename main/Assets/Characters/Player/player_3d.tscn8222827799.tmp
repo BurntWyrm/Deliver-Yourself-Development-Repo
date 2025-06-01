@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgh1spnlgo8n8"]
+[gd_scene load_steps=12 format=3 uid="uid://dgh1spnlgo8n8"]
 
 [ext_resource type="Script" uid="uid://cb2f7vvererh5" path="res://Scripts/Player/playercontroller.gd" id="1_416vt"]
 [ext_resource type="PackedScene" uid="uid://b0svw738xpqr" path="res://Assets/Characters/Player/Models/box_morph.glb" id="1_n4av1"]
@@ -10,23 +10,18 @@
 [ext_resource type="Script" uid="uid://dvgbmk2urjwyn" path="res://Scripts/Player/StateMachine/Morph States/envelope_morph.gd" id="6_niniu"]
 [ext_resource type="Script" uid="uid://wu0vv6h2pamp" path="res://Scripts/Player/StateMachine/MovementMachine/Box States/box_jump.gd" id="7_1f65d"]
 [ext_resource type="Script" uid="uid://y5vyjspc8htg" path="res://Scripts/Player/StateMachine/MovementMachine/Box States/box_move.gd" id="7_31y5l"]
-[ext_resource type="Script" uid="uid://lryycaphr7vc" path="res://Scripts/Player/StateMachine/MovementMachine/Gift States/gift_idle.gd" id="10_b23de"]
-[ext_resource type="Script" uid="uid://kyr8cm3whp3l" path="res://Scripts/Player/StateMachine/MovementMachine/Gift States/gift_move.gd" id="11_buqtg"]
-[ext_resource type="Script" uid="uid://dryqgx5u2l4m5" path="res://Scripts/Player/StateMachine/MovementMachine/Envelope States/envelope_idle.gd" id="11_vxxjc"]
-[ext_resource type="Script" uid="uid://b2p5y5q7cmnb3" path="res://Scripts/Player/StateMachine/MovementMachine/Envelope States/envelope_move.gd" id="12_mx4r2"]
-[ext_resource type="Script" uid="uid://ccvayx8tyl0h2" path="res://Scripts/Player/StateMachine/MovementMachine/Envelope States/envelope_glide.gd" id="13_mx4r2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_416vt"]
 size = Vector3(0.529, 0.296, 0.374)
 
-[node name="Player3D" type="RigidBody3D"]
+[node name="Player3D" type="RigidBody3D" groups=["player"]]
 continuous_cd = true
 script = ExtResource("1_416vt")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_416vt")
 
-[node name="Morphs" type="Node3D" parent="."]
+[node name="Morphs" type="Node3D" parent="." groups=["player"]]
 
 [node name="box_morph" parent="Morphs" instance=ExtResource("1_n4av1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -79,40 +74,9 @@ script = ExtResource("5_0846f")
 box_morph = NodePath("../BoxMorph")
 envelope_morph = NodePath("../EnvelopeMorph")
 
-[node name="MovementMachine" type="Node" parent="StateMachine/GiftMorph" node_paths=PackedStringArray("starting_state")]
-script = ExtResource("5_niniu")
-starting_state = NodePath("GiftIdle")
-
-[node name="GiftIdle" type="Node" parent="StateMachine/GiftMorph/MovementMachine" node_paths=PackedStringArray("gift_move")]
-script = ExtResource("10_b23de")
-gift_move = NodePath("../GiftMove")
-
-[node name="GiftMove" type="Node" parent="StateMachine/GiftMorph/MovementMachine" node_paths=PackedStringArray("gift_idle")]
-script = ExtResource("11_buqtg")
-gift_idle = NodePath("../GiftIdle")
-
 [node name="EnvelopeMorph" type="Node" parent="StateMachine" node_paths=PackedStringArray("gift_morph", "box_morph")]
 script = ExtResource("6_niniu")
 gift_morph = NodePath("../GiftMorph")
-box_morph = NodePath("../BoxMorph")
-
-[node name="MovementMachine" type="Node" parent="StateMachine/EnvelopeMorph" node_paths=PackedStringArray("starting_state")]
-script = ExtResource("5_niniu")
-starting_state = NodePath("EnvelopeIdle")
-
-[node name="EnvelopeIdle" type="Node" parent="StateMachine/EnvelopeMorph/MovementMachine" node_paths=PackedStringArray("envelope_move", "envelope_glide")]
-script = ExtResource("11_vxxjc")
-envelope_move = NodePath("../EnvelopeMove")
-envelope_glide = NodePath("../EnvelopeGlide")
-
-[node name="EnvelopeMove" type="Node" parent="StateMachine/EnvelopeMorph/MovementMachine" node_paths=PackedStringArray("envelope_idle", "envelope_glide")]
-script = ExtResource("12_mx4r2")
-envelope_idle = NodePath("../EnvelopeIdle")
-envelope_glide = NodePath("../EnvelopeGlide")
-
-[node name="EnvelopeGlide" type="Node" parent="StateMachine/EnvelopeMorph/MovementMachine" node_paths=PackedStringArray("envelope_idle", "envelope_move")]
-script = ExtResource("13_mx4r2")
-envelope_idle = NodePath("../EnvelopeIdle")
-envelope_move = NodePath("../EnvelopeMove")
+box_morph = NodePath(".")
 
 [editable path="Morphs/box_morph"]

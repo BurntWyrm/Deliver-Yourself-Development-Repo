@@ -1,13 +1,14 @@
+# Virtual base class for all states
 class_name State
 extends Node
 
-@export var animation_name: String
+## Variable exports
 
-# Hold a reference to the parent so that it can be controlled by the state
+# Variable that references to the parent so that it can be controlled by the state
 var parent: Player
 
 func enter() -> void:
-	parent.animations.play(animation_name)
+	pass
 
 func exit() -> void:
 	pass
