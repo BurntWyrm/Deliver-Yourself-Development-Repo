@@ -137,7 +137,8 @@ transform = Transform3D(0.999903, 0.0139622, 0, -0.0139622, 0.999903, 0, 0, 0, 1
 
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.0194088, 2.25688, 9.63713)
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.499999, 0, -0.5, 0.866023, -0.0194088, 2.25688, 9.63713)
 attributes = SubResource("CameraAttributesPractical_pst8q")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
@@ -184,7 +185,6 @@ camera_3d_resource = SubResource("Resource_unpfd")
 
 [node name="MovementInstructionsLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0505604, -0.484909, 1.44357)
-visible = false
 modulate = Color(0.294118, 1, 0.631373, 1)
 text = "[WASD] to move"
 font = ExtResource("7_amcmx")
@@ -192,7 +192,6 @@ font_size = 48
 
 [node name="MovementInstructionsLabel3" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0505604, -0.484909, 0.817134)
-visible = false
 modulate = Color(0.294118, 1, 0.631373, 1)
 text = "[Right Mouse Click] to \"aim\""
 font = ExtResource("7_amcmx")
@@ -200,7 +199,6 @@ font_size = 48
 
 [node name="MovementInstructionsLabel2" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0440154, -0.490478, -6.30248)
-visible = false
 modulate = Color(0.294118, 1, 0.631373, 1)
 text = "[Space] to toggle PCam"
 font = ExtResource("7_amcmx")
