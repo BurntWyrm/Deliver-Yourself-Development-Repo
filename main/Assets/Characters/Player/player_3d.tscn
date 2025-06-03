@@ -116,4 +116,18 @@ script = ExtResource("13_mx4r2")
 envelope_idle = NodePath("../EnvelopeIdle")
 envelope_move = NodePath("../EnvelopeMove")
 
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.000529721, -0.00989895, 0.191077)
+pixel_size = 0.007
+text = ":D"
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="JumpCd" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timers/JumpCd" to="StateMachine/BoxMorph/MovementMachine/BoxJump" method="_on_jump_cd_timeout"]
+
 [editable path="Morphs/box_morph"]
