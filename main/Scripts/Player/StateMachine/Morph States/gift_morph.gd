@@ -9,6 +9,7 @@ extends State
 # State functions
 
 func enter() -> void:
+	parent.animation.play("gift_morph")
 	movement_machine.init(parent)
 
 func exit() -> void:

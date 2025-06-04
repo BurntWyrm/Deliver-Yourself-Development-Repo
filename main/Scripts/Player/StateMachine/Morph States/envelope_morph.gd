@@ -6,9 +6,14 @@ extends State
 @export var box_morph: State
 @onready var movement_machine: MovementMachine = $MovementMachine
 
+@export var movement_torque := 3
+@export var turning_torque := 5
+@export var max_angular_speed := 5
+
 # State functions
 
 func enter() -> void:
+	parent.animation.play("envelope_morph")
 	movement_machine.init(parent)
 
 func exit() -> void:
