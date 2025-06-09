@@ -133,8 +133,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nrx84")
 
-[sub_resource type="Animation" id="Animation_leltf"]
-resource_name = "box_morph"
+[sub_resource type="Animation" id="Animation_kfk3h"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -208,8 +208,8 @@ tracks/5/keys = {
 "values": [1.0]
 }
 
-[sub_resource type="Animation" id="Animation_kfk3h"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_leltf"]
+resource_name = "box_morph"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
