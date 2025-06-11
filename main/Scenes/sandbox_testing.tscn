@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4ce3rd64dogu"]
+[gd_scene load_steps=19 format=3 uid="uid://b4ce3rd64dogu"]
 
 [ext_resource type="Material" uid="uid://b77ryguvll5mf" path="res://Assets/Environment/kenney_prototype-textures/Tres/DarkTexture_13.tres" id="1_d2yjn"]
 [ext_resource type="Material" uid="uid://bgb4t5okwuvba" path="res://Assets/Environment/kenney_prototype-textures/Tres/OrangeTexture_09.tres" id="3_67s1q"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_q7f6b"]
 [ext_resource type="PackedScene" uid="uid://dgh1spnlgo8n8" path="res://Assets/Characters/Player/player_3d.tscn" id="5_3n14a"]
+[ext_resource type="PackedScene" uid="uid://c6iyqkky51ggl" path="res://Assets/Characters/Player/player_floor_checker.tscn" id="6_d3sbo"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_huoqj"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_yqjnx"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_yqjnx"]
@@ -56,32 +57,19 @@ points = PackedVector3Array(-10, -0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, -
 
 [node name="sandbox" type="Node3D"]
 
-[node name="MainCamera3D" type="Camera3D" parent="."]
-unique_name_in_owner = true
-physics_interpolation_mode = 1
-transform = Transform3D(-0.819147, 0.405578, -0.405575, 0, 0.707103, 0.707098, 0.573573, 0.579225, -0.57922, -2.66995, 4.63398, -3.42495)
-fov = 45.0
-size = 3.72
-near = 0.001
-
-[node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("4_q7f6b")
-metadata/_custom_type_script = "uid://bd046eokvcnu2"
-
 [node name="Player" type="Node" parent="."]
 
 [node name="Player3D" parent="Player" instance=ExtResource("5_3n14a")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.764376, 1.42688, -0.845733)
 
 [node name="PlayerCamera" type="Node3D" parent="Player" node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
-transform = Transform3D(-0.819147, 0.405578, -0.405575, 0, 0.707103, 0.707098, 0.573573, 0.579225, -0.57922, -2.66995, 4.63398, -3.42495)
+transform = Transform3D(-0.819147, 0.405578, -0.405575, 0, 0.707103, 0.707098, 0.573573, 0.579225, -0.57922, -2.26438, 3.92688, -2.84573)
 top_level = true
 script = ExtResource("6_huoqj")
 priority = 10
-follow_mode = 5
+follow_mode = 2
 follow_target = NodePath("../Player3D")
 tween_resource = SubResource("Resource_d3sbo")
 tween_on_load = false
@@ -91,6 +79,23 @@ follow_damping = true
 dead_zone_width = 0.3
 dead_zone_height = 0.4
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="player_floor_checker" parent="Player" instance=ExtResource("6_d3sbo")]
+unique_name_in_owner = true
+
+[node name="MainCamera3D" type="Camera3D" parent="Player"]
+unique_name_in_owner = true
+physics_interpolation_mode = 1
+transform = Transform3D(-0.819147, 0.405578, -0.405575, 0, 0.707103, 0.707098, 0.573573, 0.579225, -0.57922, -2.26438, 3.92688, -2.84573)
+fov = 45.0
+size = 3.72
+near = 0.001
+
+[node name="PhantomCameraHost" type="Node" parent="Player/MainCamera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_q7f6b")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Environment" type="Node" parent="."]
 

@@ -14,6 +14,11 @@ func enter() -> void:
 
 func exit() -> void:
 	movement_machine.deinit()
+	if parent.floor_checker.is_on_floor == true:
+		parent.apply_impulse(Vector3.UP * 2)
+		parent.angular_velocity = Vector3.ZERO
+	else:
+		return
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("envelope_morph_swap"):
@@ -30,6 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	movement_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
+	print(parent.floor_checker.is_on_floor)
 	movement_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
