@@ -75,6 +75,21 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 [node name="Player3D" parent="Player" instance=ExtResource("5_3n14a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.764376, 1.42688, -0.845733)
 
+[node name="box_outside_flap_2" parent="Player/Player3D/Morphs/box_morph/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(1, 5.50712e-14, 5.96047e-08, -3.53605e-14, 1, -8.52651e-14, -5.96046e-08, 1.42109e-13, 1, -0.0940775, -0.173398, 0.000508944)
+
+[node name="box_outside_flap_1" parent="Player/Player3D/Morphs/box_morph/Armature_001/Skeleton3D" index="1"]
+transform = Transform3D(1, -9.77891e-14, 5.96045e-08, -3.94649e-14, 1, 1.13687e-13, -5.96046e-08, -1.13687e-13, 1, 0.094078, -0.173398, 0.000508944)
+
+[node name="box_inside_flap_1" parent="Player/Player3D/Morphs/box_morph/Armature_001/Skeleton3D" index="2"]
+transform = Transform3D(1, 8.52651e-14, 0, -5.68434e-14, 1, 5.96047e-08, -2.85327e-14, -5.96047e-08, 1, -0.00161709, -0.172398, 0.200591)
+
+[node name="box_inside_flap_1_001" parent="Player/Player3D/Morphs/box_morph/Armature_001/Skeleton3D" index="3"]
+transform = Transform3D(1, -5.96047e-08, 1.19209e-07, 0, 1, 1.19209e-07, -1.78814e-07, -1.78814e-07, 1, -0.000363288, -0.172398, -0.197818)
+
+[node name="box_cover" parent="Player/Player3D/Morphs/box_morph/Armature_001/Skeleton3D" index="4"]
+transform = Transform3D(1, 1.42109e-14, -1.42109e-14, -1.42109e-14, 1, 7.10543e-15, -1.42109e-14, -7.10543e-15, 1, 2.43696e-07, 2.111e-08, -1.24176e-09)
+
 [node name="PlayerCamera" type="Node3D" parent="Player" node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
 transform = Transform3D(-0.819147, 0.405578, -0.405575, 0, 0.707103, 0.707098, 0.573573, 0.579225, -0.57922, -2.66995, 4.63398, -3.42495)
