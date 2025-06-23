@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6iyqkky51ggl"]
+
+[ext_resource type="Script" uid="uid://5ois1i210qxv" path="res://Scripts/Player/player_floor_checker.gd" id="1_22gxj"]
+
+[node name="player_floor_checker" type="RayCast3D"]
+target_position = Vector3(0, -0.5, 0)
+script = ExtResource("1_22gxj")

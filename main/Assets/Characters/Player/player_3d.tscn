@@ -616,11 +616,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_05s68")
 }
 
-[node name="RayCasts" type="Node3D" parent="."]
-
-[node name="floor_checker" type="RayCast3D" parent="RayCasts"]
-unique_name_in_owner = true
-
 [connection signal="timeout" from="Timers/JumpCd" to="StateMachine/BoxMorph/MovementMachine/BoxJump" method="_on_jump_cd_timeout"]
 
 [editable path="Morphs/box_morph"]
